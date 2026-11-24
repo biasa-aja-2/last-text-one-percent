@@ -16,7 +16,11 @@ TEXT = (
 
 def gate(text):
     """Self-check matching the bounty gate: UTF-8 text of 1 to 200
-    characters, not only white space, no leading/trailing whitespace."""
+    characters, not only white space, no leading/trailing whitespace.
+    The 200-character cap is the gate in the bounty rules: the sealed
+    scorer gives Valid 0 to anything longer, and only a valid entry
+    goes before the judge, so the text must clear it with room to spare.
+    """
     if not isinstance(text, str):
         return "text is not str"
     if not (1 <= len(text) <= 200):
